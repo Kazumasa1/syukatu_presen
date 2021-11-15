@@ -131,9 +131,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# ロギングの設定
+# ロギング設定
 LOGGING = {
-    'version': 1,
+    'version': 1,  # 1固定
     'disable_existing_loggers': False,
 
     # ロガーの設定
@@ -143,8 +143,8 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO',
         },
-        # haikuアプリケーションが利用するロガー
-        'haiku': {
+        # diaryアプリケーションが利用するロガー
+        'diary': {
             'handlers': ['console'],
             'level': 'DEBUG',
         },
@@ -160,13 +160,13 @@ LOGGING = {
     },
 
     # フォーマッタの設定
-    'formatter': {
+    'formatters': {
         'dev': {
             'format': '\t'.join([
                 '%(asctime)s',
                 '[%(levelname)s]',
                 '%(pathname)s(Line:%(lineno)d)',
-                '%(massage)s'
+                '%(message)s'
             ])
         },
     }
