@@ -12,33 +12,22 @@
   </head>
   <body>
 {#        ナビゲーションバー  #}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">ロゴ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="inquiry">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">このサイトについて</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="inquiry">お問合せ</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="inquiry" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                お問合せ
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <a class="nav-link active" aria-current="page" href="inquiry">お問合せ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link active" aria-current="page" href="#">ログイン</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -57,7 +46,7 @@
              {#    パンクズリスト  #}
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item active" aria-current="page">トップページ</li>
               </ol>
             </nav>
          </div>
@@ -65,9 +54,9 @@
         <div class="col">
 {#            ボタンの設定#}
           <div class="p-3 border bg-light">
-            <button type="button" class="btn btn-outline-primary">Primary</button>
-            <button type="button" class="btn btn-outline-secondary">Secondary</button>
-            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-primary">締切順</button>
+            <button type="button" class="btn btn-outline-secondary">新着順</button>
+            <button type="button" class="btn btn-outline-success">コンテスト名順</button>
 {#            <button type="button" class="btn btn-outline-danger">Danger</button>#}
 {#            <button type="button" class="btn btn-outline-warning">Warning</button>#}
 {#            <button type="button" class="btn btn-outline-info">Info</button>#}

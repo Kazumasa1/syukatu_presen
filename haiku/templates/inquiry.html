@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}お問い合わせ | Private Diary{% endblock %}
+{% block title %}お問い合わせ | 俳句（仮）{% endblock %}
 
 {% block active_inquiry %}active{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
+{#        <div class="my-div-style">#}
             <form method="post">
                 {% csrf_token %}
 
@@ -29,7 +29,7 @@
                     <button class="btn btn-primary" type="submit">送信</button>
                 </div>
             </form>
-        </div>
+{#        </div>#}
     </div>
 </div>
 {% endblock %}
