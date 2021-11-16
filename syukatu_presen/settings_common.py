@@ -133,6 +133,18 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'alert alert-danger',
+    messages.WARNING: 'alert alert-warning',
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
+}
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+
 # ロギング設定
 LOGGING = {
     'version': 1,  # 1固定
@@ -174,9 +186,3 @@ LOGGING = {
     }
 }
 
-MESSAGE_TAGS = {
-    messages.ERROR: 'alert alert-danger',
-    messages.WARNING: 'alert alert-warning',
-    messages.SUCCESS: 'alert alert-success',
-    messages.INFO: 'alert alert-info',
-}
