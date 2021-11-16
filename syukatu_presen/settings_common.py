@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'haiku.apps.HaikuConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
