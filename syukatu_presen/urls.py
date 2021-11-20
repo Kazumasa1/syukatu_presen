@@ -5,7 +5,7 @@ from django.urls import path, include
 from . import settings_common, settings_dev
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', include('haiku.urls')),
     path('accounts/', include('allauth.urls')),
 ]
