@@ -18,6 +18,11 @@ class InquiryView(generic.FormView):
     form_class = InquiryForm
     success_url = reverse_lazy('haiku:inquiry')
 
+class InquiryView(generic.FormView):
+    template_name = "detail.html"
+    form_class = InquiryForm
+    success_url = reverse_lazy('haiku:detail')
+
     def form_valid(self, form):
         form.send_email()
         messages.success(self.request, 'メッセージを送信しました。')
