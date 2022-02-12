@@ -8,4 +8,5 @@ urlpatterns = [
     path('inquiry/', views.InquiryView.as_view(), name="inquiry"),
     path('detail/', views.InquiryView.as_view(), name="detail"),
     # path('inquiry.html/', views.InquiryView.as_view(), name="inquiry"),
+    path('kobo-info/', views.KoboInfoView.as_view(), name="kobo_info")
 ]

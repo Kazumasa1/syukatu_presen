@@ -4,6 +4,8 @@ from django.views import generic
 from .forms import InquiryForm
 from django.urls import reverse_lazy
 from django.contrib import messages
+
+from .models import Kobo_info
 # from django.shortcuts import render
 
 # Create your views here.
@@ -28,3 +30,13 @@ class InquiryView(generic.FormView):
         messages.success(self.request, 'メッセージを送信しました。')
         logger.info('inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
+
+class KoboInfoView(generic.ListView):
+    model = Kobo_info
+
+    template_name = 'kobo_list.html'
+
+    def get_queryset(self):
+        kobos = Kobo_info.objects
+        return kobos
+

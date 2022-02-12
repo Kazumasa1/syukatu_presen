@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block contents %}
+{% block top_contents %}
 
     <div class="container" style="margin-top: 100px">
 
@@ -51,7 +52,11 @@
                 </li>
             </ul>
 
-            <!-- 公募情報エリア -->
+{% endblock %}
+
+<!-- 公募情報エリア -->
+{% block kobo_info%}
+
             <div class="card" style="height: 300px;">
                 <div class="card-body">
                     <h5 class="card-title">くらし川柳</h5>
@@ -84,6 +89,9 @@
                 </div>
             </div>
 
+{% endblock %}
+
+{% block botton_contents %}
             <!-- ページネーション -->
             <nav aria-label="Page navigation example" style="margin-bottom: 100px">
                 <ul class="pagination justify-content-center">
