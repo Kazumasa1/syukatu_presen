@@ -5,10 +5,11 @@ from django.urls import path, include
 from . import settings_common, settings_dev
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('simeji/', admin.site.urls),
     path('', include('haiku.urls')),
-    path('accounts/', include('allauth.urls')),
+    # path('accounts/', include('allauth.urls')),
+    path('simeji/', include('allauth.urls')),
 ]
 
 # 開発サーバーでメディアを配信できるようにする設定
-urlpatterns += static(settings_common.MEDIA_URL, document_root=settings_dev.MEDIA_ROOT)
+# urlpatterns += static(settings_common.MEDIA_URL, document_root=settings_dev.MEDIA_ROOT)

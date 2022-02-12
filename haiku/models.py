@@ -1,10 +1,12 @@
 from django.db import models
-
+from accounts.models import CustomUser
 # Create your models here.
 
 class Kobo_info(models.Model):
 
     """公募情報モデル"""
+
+    # user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
 
     title = models.CharField(verbose_name='タイトル', max_length=40)
     deadline = models.DateField(verbose_name='締切日', blank=True, null=True)

@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 
 from .models import Kobo_info
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # from django.shortcuts import render
 
 # Create your views here.
@@ -34,9 +36,9 @@ class InquiryView(generic.FormView):
 class KoboInfoView(generic.ListView):
     model = Kobo_info
 
-    template_name = 'kobo_list.html'
+    template_name = 'index.html'
 
     def get_queryset(self):
-        kobos = Kobo_info.objects
+        kobos = Kobo_info.objects.filter(user=self.request.user).order_by('-created_at')
         return kobos
 
