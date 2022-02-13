@@ -55,39 +55,57 @@
 {% endblock %}
 
 <!-- 公募情報エリア -->
-{% block kobo_info%}
+{% block kobo_info %}
+    {{ data }}
+    {% for kobo in kobo_list %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ kobo.title }}
+                </h5>
+                <p class="card-text">
+                    賞金：{{ kobo.prize }}
+                </p>
+                <p class="card-text">
+                    締切：{{ kobo.deadline }}
+                </p>
+                <p class="card-text">
+                    募集内容：{{ kobo.contents }}
+                </p>
+                <p class="card-text">応募リンク：<a href="https://present.eonet.jp/senryupre21120301/" class="card-link">
+                    応募リンク：{{ kobo.link }}
+                </a></p>
+                <a href="{% url 'haiku:detail' %}" class="btn btn-primary">もっと詳しく</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>公募がありません。。。。</p>
+    {% endfor %}
 
-            <div class="card" style="height: 300px;">
-                <div class="card-body">
-                    <h5 class="card-title">くらし川柳</h5>
-                    <p class="card-text">賞金：JCBギフトカード　5,000円分</p>
-                    <p class="card-text">締切：2022年01月13日</p>
-                    <p class="card-text">募集内容：『バレンタイン』をお題にした川柳</p>
-                    <p class="card-text">応募期間：2021年12月3日（金）～1月13日（木）</p>
-                    <p class="card-text">応募リンク：<a href="https://present.eonet.jp/senryupre21120301/" class="card-link">https://present.eonet.jp/senryupre21120301/</a></p>
-                    <a href="{% url 'haiku:detail' %}" class="btn btn-primary">もっと詳しく</a>
-                </div>
-            </div>
-            <div class="card" style="height: 300px;">
-                <div class="card-body">
-                    <h5 class="card-title">女性活躍川柳</h5>
-                    <p class="card-text">賞金：VISAギフトカード　10,000円分</p>
-                    <p class="card-text">締切：2022年01月01日</p>
-                    <p class="card-text">募集内容：「論理的」をお題にした川柳</p>
-                    <p class="card-text">応募リンク：<a href="https://www.sdgswip.com/pages/5514498/static" class="card-link">https://www.sdgswip.com/pages/5514498/static</a></p>
-                    <a href="#" class="btn btn-primary">もっと詳しく</a>
-                </div>
-            </div>
-            <div class="card" style="height: 300px;">
-                <div class="card-body">
-                    <h5 class="card-title">まるせん　論理的川柳コンテスト</h5>
-                    <p class="card-text">賞金：ギフト券 500円分</p>
-                    <p class="card-text">締切：2021年12月31日</p>
-                    <p class="card-text">募集内容：「薬」をお題とした川柳を募集</p>
-                    <p class="card-text">応募リンク：<a href="https://marusenryu.com/contest/269" class="card-link">https://marusenryu.com/contest/269</a></p>
-                    <a href="#" class="btn btn-primary">もっと詳しく</a>
-                </div>
-            </div>
+
+
+
+
+{#            <div class="card" style="height: 300px;">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">女性活躍川柳</h5>#}
+{#                    <p class="card-text">賞金：VISAギフトカード　10,000円分</p>#}
+{#                    <p class="card-text">締切：2022年01月01日</p>#}
+{#                    <p class="card-text">募集内容：「論理的」をお題にした川柳</p>#}
+{#                    <p class="card-text">応募リンク：<a href="https://www.sdgswip.com/pages/5514498/static" class="card-link">https://www.sdgswip.com/pages/5514498/static</a></p>#}
+{#                    <a href="#" class="btn btn-primary">もっと詳しく</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card" style="height: 300px;">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">まるせん　論理的川柳コンテスト</h5>#}
+{#                    <p class="card-text">賞金：ギフト券 500円分</p>#}
+{#                    <p class="card-text">締切：2021年12月31日</p>#}
+{#                    <p class="card-text">募集内容：「薬」をお題とした川柳を募集</p>#}
+{#                    <p class="card-text">応募リンク：<a href="https://marusenryu.com/contest/269" class="card-link">https://marusenryu.com/contest/269</a></p>#}
+{#                    <a href="#" class="btn btn-primary">もっと詳しく</a>#}
+{#                </div>#}
+{#            </div>#}
 
 {% endblock %}
 
@@ -110,7 +128,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

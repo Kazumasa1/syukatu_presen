@@ -8,7 +8,7 @@ urlpatterns = [
     path('simeji/', admin.site.urls),
     path('', include('haiku.urls')),
     # path('accounts/', include('allauth.urls')),
-    path('simeji/', include('allauth.urls')),
+    # path('simeji/', include('allauth.urls')),
 ]
 
 # 開発サーバーでメディアを配信できるようにする設定
