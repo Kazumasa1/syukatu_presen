@@ -72,8 +72,8 @@
                 <p class="card-text">
                     募集内容：{{ kobo.contents }}
                 </p>
-                <p class="card-text">応募リンク：<a href="https://present.eonet.jp/senryupre21120301/" class="card-link">
-                    応募リンク：{{ kobo.link }}
+                <p class="card-text">応募リンク：<a href="{{ kobo.link }}" class="card-link">
+                    {{ kobo.link }}
                 </a></p>
                 <a href="{% url 'haiku:detail' %}" class="btn btn-primary">もっと詳しく</a>
             </div>
