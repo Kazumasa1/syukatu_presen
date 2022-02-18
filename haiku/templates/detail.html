@@ -1,9 +1,12 @@
-{% extends 'base.html' %}
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
 
 {% block contents %}
 
     <div class="container" style="margin-top: 100px">
-        <h1>公募タイトル</h1>
+
+        <h1>{{ object.title }}</h1>
+{#        <h1>公募タイトル</h1>#}
 
         <h2>採点してみる</h2>
         <form>
@@ -49,23 +52,17 @@
 
         <dl>
             <dt>懸賞</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
+            <dd>{{ object.prize }}</dd>
             <dt>応募先</dt>
-            <dd>URL</dd>
+            <dd>{{ object.link }}</dd>
             <dt>締切</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
+            <dd>{{ object.deadline }}</dd>
             <dt>公募テーマ</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
-            <dt>応募方法</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
+            <dd>{{ object.contents }}</dd>
             <dt>参加資格</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
-            <dt>審査員</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
-            <dt>当選発表日</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
+            <dd>{{ object.requirements }}</dd>
             <dt>主催</dt>
-            <dd>サンプルサンプルサンプルサンプル</dd>
+            <dd>{{ object.sponsor }}</dd>
         </dl>
     </div>
 {#    <div style="margin-top: 100px">detail</div>#}

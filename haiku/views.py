@@ -33,10 +33,10 @@ class InquiryView(generic.FormView):
     success_url = reverse_lazy('haiku:inquiry')
 
 
-class InquiryView(generic.FormView):
+class DetailView(generic.DetailView):
+    model = Kobo_info
     template_name = "detail.html"
-    form_class = InquiryForm
-    success_url = reverse_lazy('haiku:detail')
+    # success_url = reverse_lazy('haiku:detail')
 
     def form_valid(self, form):
         form.send_email()

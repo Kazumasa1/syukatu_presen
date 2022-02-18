@@ -75,37 +75,12 @@
                 <p class="card-text">応募リンク：<a href="{{ kobo.link }}" class="card-link">
                     {{ kobo.link }}
                 </a></p>
-                <a href="{% url 'haiku:detail' %}" class="btn btn-primary">もっと詳しく</a>
+                <a href="{% url 'haiku:detail' kobo.pk %}" class="btn btn-primary">もっと詳しく</a>
             </div>
         </div>
     {% empty %}
         <p>公募がありません。。。。</p>
     {% endfor %}
-
-
-
-
-
-{#            <div class="card" style="height: 300px;">#}
-{#                <div class="card-body">#}
-{#                    <h5 class="card-title">女性活躍川柳</h5>#}
-{#                    <p class="card-text">賞金：VISAギフトカード　10,000円分</p>#}
-{#                    <p class="card-text">締切：2022年01月01日</p>#}
-{#                    <p class="card-text">募集内容：「論理的」をお題にした川柳</p>#}
-{#                    <p class="card-text">応募リンク：<a href="https://www.sdgswip.com/pages/5514498/static" class="card-link">https://www.sdgswip.com/pages/5514498/static</a></p>#}
-{#                    <a href="#" class="btn btn-primary">もっと詳しく</a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="card" style="height: 300px;">#}
-{#                <div class="card-body">#}
-{#                    <h5 class="card-title">まるせん　論理的川柳コンテスト</h5>#}
-{#                    <p class="card-text">賞金：ギフト券 500円分</p>#}
-{#                    <p class="card-text">締切：2021年12月31日</p>#}
-{#                    <p class="card-text">募集内容：「薬」をお題とした川柳を募集</p>#}
-{#                    <p class="card-text">応募リンク：<a href="https://marusenryu.com/contest/269" class="card-link">https://marusenryu.com/contest/269</a></p>#}
-{#                    <a href="#" class="btn btn-primary">もっと詳しく</a>#}
-{#                </div>#}
-{#            </div>#}
 
 {% endblock %}
 
