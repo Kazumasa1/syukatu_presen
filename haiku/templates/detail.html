@@ -1,56 +1,26 @@
-{#{% extends 'base.html' %}#}
-{#{% load static %}#}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block contents %}
+{% block kobo_detail %}
 
-    <div class="container" style="margin-top: 100px">
+    <div class="container d-grid gap-3" style="margin-top: 100px">
 
         <h1>{{ object.title }}</h1>
-{#        <h1>公募タイトル</h1>#}
-
         <h2>採点してみる</h2>
-        <form>
-{#            <div class="mb-3">#}
-{#                <label for="exampleInputEmail1" class="form-label">五</label>#}
-{#                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
-{#            </div>#}
-{#            <div class="mb-3">#}
-{#                <label for="exampleInputEmail1" class="form-label">七</label>#}
-{#                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
-{#            </div>#}
-{#            <div class="mb-3">#}
-{#                <label for="exampleInputEmail1" class="form-label">五</label>#}
-{#                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
-{#            </div>#}
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label for="" class="col-form-label">五</label>
-                </div>
-                <div class="col-auto">
-                    <input type="" id="" class="form-control" aria-describedby="">
-                </div>
-            </div>
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label for="" class="col-form-label">七</label>
-                </div>
-                <div class="col-auto">
-                    <input type="" id="" class="form-control" aria-describedby="">
-                </div>
-            </div>
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label for="" class="col-form-label">五</label>
-                </div>
-                <div class="col-auto">
-                    <input type="" id="" class="form-control" aria-describedby="">
-                </div>
-            </div>
+        <div class="container p-2 border border-1 rounded-3" style="--bs-bg-opacity: .5;">
 
-            <button type="submit" class="btn btn-primary">採点する</button>
-        </form>
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">川柳・俳句を入力</label>
+                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">入力例：閑さや 岩にしみ入る 蝉の声</div>
+                </div>
 
-        <dl>
+                <button type="submit" class="btn btn-outline-success">採点する</button>
+            </form>
+        </div>
+
+        <dl class="d-grid gap-3">
             <dt>懸賞</dt>
             <dd>{{ object.prize }}</dd>
             <dt>応募先</dt>
