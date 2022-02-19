@@ -1,13 +1,17 @@
 import logging
 
+import requests
 from django.views import generic
-from .forms import InquiryForm
+# from .forms import InquiryForm
 from django.urls import reverse_lazy
 from django.contrib import messages
-
+from .forms import SaitenForm
 from django.shortcuts import render
 
 from .models import Kobo_info
+
+
+from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # from django.shortcuts import render
@@ -27,23 +31,41 @@ class IndexView(generic.TemplateView):
 
 
 
-class InquiryView(generic.FormView):
-    template_name = "inquiry.html"
-    form_class = InquiryForm
-    success_url = reverse_lazy('haiku:inquiry')
+# class InquiryView(generic.FormView):
+#     template_name = "inquiry.html"
+#     form_class = InquiryForm
+#     success_url = reverse_lazy('haiku:inquiry')
 
 
-class DetailView(generic.DetailView):
+class DetailView(generic.DetailView, generic.FormView):
+# class DetailView(generic.FormView):
     model = Kobo_info
     template_name = "detail.html"
-    # success_url = reverse_lazy('haiku:detail')
 
-    def form_valid(self, form):
-        form.send_email()
-        messages.success(self.request, 'メッセージを送信しました。')
-        logger.info('inquiry sent by {}'.format(form.cleaned_data['name']))
-        return super().form_valid(form)
+    form_class = SaitenForm
 
+    def get_success_url(self):
+        return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
+
+    # def haiku(self, request):
+    #     print(request.POST.get("haiku"))
+    #     return super().haiku(request)
+
+
+    # def form_valid(self, form):
+    #     form.send_email()
+    #     messages.success(self.request, 'メッセージを送信しました。')
+    #     logger.info('inquiry sent by {}'.format(form.cleaned_data['name']))
+    #     return super().form_valid(form)
+
+
+# def form(request):
+#     text = request.POST['haiku']
+#     d = {
+#         'message': 'POST!',
+#         'text': text,
+#     }
+#     return render(request, 'detail.html', d)
 
 class KoboListView(generic.ListView):
     model = Kobo_info

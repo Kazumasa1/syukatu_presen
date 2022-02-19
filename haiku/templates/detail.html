@@ -9,12 +9,31 @@
         <h2>採点してみる</h2>
         <div class="container p-2 border border-1 rounded-3" style="--bs-bg-opacity: .5;">
 
-            <form>
+            <form method="post" action="">
+
+                {% csrf_token %}
+
+                {{ message }}
+
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">川柳・俳句を入力</label>
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp">
+{#                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="haiku">#}
+                        {{ form.non_field_errors }}
+
+                        {% for field in form %}
+{#                            <div class="form-group row">#}
+{#                                <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">#}
+{#                                    <strong>{{ field.label_tag }}</strong>#}
+{#                                </label>#}
+{#                                <div class="col-sm-8">#}
+                                    {{ field }}
+                                    {{ field.errors }}
+{#                                </div>#}
+{#                            </div>#}
+                        {% endfor %}
                     <div id="emailHelp" class="form-text">入力例：閑さや 岩にしみ入る 蝉の声</div>
                 </div>
+
 
                 <button type="submit" class="btn btn-outline-success">採点する</button>
             </form>
@@ -24,7 +43,7 @@
             <dt>懸賞</dt>
             <dd>{{ object.prize }}</dd>
             <dt>応募先</dt>
-            <dd>{{ object.link }}</dd>
+            <dd><a href="{{ object.link }}" target="_blank" rel="noopener noreferrer">{{ object.link }}</a></dd>
             <dt>締切</dt>
             <dd>{{ object.deadline }}</dd>
             <dt>公募テーマ</dt>
@@ -35,6 +54,5 @@
             <dd>{{ object.sponsor }}</dd>
         </dl>
     </div>
-{#    <div style="margin-top: 100px">detail</div>#}
 
 {% endblock %}
