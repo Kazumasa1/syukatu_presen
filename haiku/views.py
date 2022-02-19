@@ -44,13 +44,29 @@ class DetailView(generic.DetailView, generic.FormView):
 
     form_class = SaitenForm
 
+    # 俳句採点formでsubmitボタンを押した時にリダイレクトさせるようにする
     def get_success_url(self):
+        self.request.session['haiku'] = self.POST.get('haiku')
         return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        # self.request.session['haiku'] = 'ssss'
+        return super(DetailView, self).get_context_data(**kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.request.session['haiku'] = self.request.POST.get('haiku')
+        return self.get(request, *args, **kwargs)
+
+    # def post_test(request):
+
+    #     context = {
+    #         'haiku': "POST method OK!!",
+    #     }
+    #     return render(request, 'detail.html', context)
 
     # def haiku(self, request):
     #     print(request.POST.get("haiku"))
     #     return super().haiku(request)
-
 
     # def form_valid(self, form):
     #     form.send_email()

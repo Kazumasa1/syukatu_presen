@@ -14,6 +14,7 @@ class SaitenForm(forms.Form):
         self.fields['haiku'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['haiku'].widget.attrs['placeholder'] = '川柳・俳句をここに入力'
 
+
         # self.fields['email'].widget.attrs['class'] = 'form-control col-11'
         # self.fields['email'].widget.attrs['placeholder'] = 'メールアドレスをここに入力してください。'
         #
