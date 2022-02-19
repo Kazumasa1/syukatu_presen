@@ -13,8 +13,6 @@
 
                 {% csrf_token %}
 
-                {{ message }}
-
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">川柳・俳句を入力</label>
 {#                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" name="haiku">#}
@@ -26,7 +24,7 @@
 {#                                    <strong>{{ field.label_tag }}</strong>#}
 {#                                </label>#}
 {#                                <div class="col-sm-8">#}
-                                    {{ request.session.haiku }}
+
                                     {{ field }}
                                     {{ field.errors }}
 {#                                </div>#}
@@ -35,8 +33,29 @@
                     <div id="emailHelp" class="form-text">入力例：閑さや 岩にしみ入る 蝉の声</div>
                 </div>
 
-
                 <button type="submit" class="btn btn-outline-success">採点する</button>
+
+                {# formを入力したら表示 #}
+                {% if request.session.haiku %}
+                    <div class="alert alert-success" role="alert" style="margin-top: 2rem">
+                        <h4 class="alert-heading">Well done!</h4>
+    {#                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>#}
+                        <hr>
+                        <p class="fs-1">{{ request.session.haiku }}</p>
+    {#                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>#}
+                    </div>
+                {% endif %}
+{#                <div class="card">#}
+{#                    <div class="card-header">#}
+{#                    Quote#}
+{#                    </div>#}
+{#                    <div class="card-body">#}
+{#                    <blockquote class="blockquote mb-0">#}
+{#                      <p>A well-known quote, contained in a blockquote element.</p>#}
+{#                      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>#}
+{#                    </blockquote>#}
+{#                    </div>#}
+{#                </div>#}
             </form>
         </div>
 

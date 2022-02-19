@@ -22,6 +22,8 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     kobo_list = Kobo_info.objects.all()
+    # sessionに保存された俳句をクリア
+    request.session.clear()
     return render(request, 'index.html', {'kobo_list': kobo_list})
 
 
@@ -49,14 +51,14 @@ class DetailView(generic.DetailView, generic.FormView):
         self.request.session['haiku'] = self.POST.get('haiku')
         return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
 
-    def get_context_data(self, **kwargs):
-        # self.request.session['haiku'] = 'ssss'
-        return super(DetailView, self).get_context_data(**kwargs)
 
     def post(self, request, *args, **kwargs):
         self.request.session['haiku'] = self.request.POST.get('haiku')
         return self.get(request, *args, **kwargs)
 
+    # def get_context_data(self, **kwargs):
+    #     self.request.session['haiku'] = ''
+    #     return super(DetailView, self).get_context_data(**kwargs)
     # def post_test(request):
 
     #     context = {
