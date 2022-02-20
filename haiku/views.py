@@ -1,5 +1,5 @@
 import logging
-
+import environ
 import requests
 from django.views import generic
 # from .forms import InquiryForm
@@ -10,6 +10,7 @@ from django.shortcuts import render
 
 from .models import Kobo_info
 
+from bs4 import BeautifulSoup
 
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -17,6 +18,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.shortcuts import render
 
 # Create your views here.
+
+# .envファイルを読み込み
+env = environ.Env()
+env.read_env('.env')
+# .envファイルからSECRET_KEYを読み込み
+API_KEY = env('API_KEY')
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +45,12 @@ class IndexView(generic.TemplateView):
 #     form_class = InquiryForm
 #     success_url = reverse_lazy('haiku:inquiry')
 
+url = "https://jlp.yahooapis.jp/MAService/V1/parse"
+params = {
+    "appid": API_KEY,
+    "sentence": "風に火をつける女の片えくぼ",
+    "response": "pos",
+}
 
 class DetailView(generic.DetailView, generic.FormView):
 # class DetailView(generic.FormView):
@@ -53,7 +66,16 @@ class DetailView(generic.DetailView, generic.FormView):
 
 
     def post(self, request, *args, **kwargs):
-        self.request.session['haiku'] = self.request.POST.get('haiku')
+        # self.request.session['haiku'] = self.request.POST.get('haiku')
+
+        res = requests.get(url, params=params)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        word = soup.find_all('pos')
+        pos_text = ""
+        for text in range(len(word)):
+            pos_text += word[text].text
+
+        self.request.session['haiku'] = pos_text
         return self.get(request, *args, **kwargs)
 
     # def get_context_data(self, **kwargs):
