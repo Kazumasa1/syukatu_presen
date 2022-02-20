@@ -21,3 +21,19 @@ class Kobo_info(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Saiten_info(models.Model):
+
+    """採点機能に使う過去の入賞作品の分析結果モデル"""
+
+    pos = models.CharField(verbose_name='品詞文字列', max_length=80)
+    winningCount = models.PositiveIntegerField(verbose_name='入賞頻度', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Saiten_info'
+
+    def __str__(self):
+        return self.pos
+
