@@ -29,7 +29,7 @@ API_KEY = env('API_KEY')
 logger = logging.getLogger(__name__)
 
 def index(request):
-    kobo_list = Kobo_info.objects.all()
+    kobo_list = Kobo_info.objects.order_by('deadline')
     # sessionに保存された俳句をクリア
     request.session.clear()
     return render(request, 'index.html', {'kobo_list': kobo_list})
@@ -113,19 +113,21 @@ class DetailView(generic.DetailView, generic.FormView):
 
 
 
-class KoboListView(generic.ListView):
-    model = Kobo_info
-
-    template_name = 'index.html'
-
-    def get_queryset(self):
-        kobos = Kobo_info.objects.all()
-
-        cxt = {
-            'kobo_list': kobos
-        }
-
-        return cxt
+# class KoboListView(generic.ListView):
+#     model = Kobo_info
+#
+#     template_name = 'index.html'
+#
+#     def get_queryset(self):
+#         order = ('deadline')
+#         kobos = Kobo_info.objects.order_by(*order)
+#         # kobos = Kobo_info.objects.all()
+#
+#         cxt = {
+#             'kobo_list': kobos
+#         }
+#
+#         return cxt
 
 
 # def KoboListView(request):

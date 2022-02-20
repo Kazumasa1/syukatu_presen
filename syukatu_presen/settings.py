@@ -27,14 +27,18 @@ env.read_env('.env')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
+# ALLOWED_HOSTS = []
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'baton'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/usr/share/nginx/html/static'
+MEDIA_ROOT = '/usr/share/nginx/html/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -149,19 +155,25 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO',
         },
-        # diaryアプリケーションが利用するロガー
-        'diary': {
+        # haikuアプリケーションが利用するロガー
+        'haiku': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
+            # 'level': 'DEBUG',
         },
     },
 
     # ハンドラの設定
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'dev'
+        'file': {
+            'level': 'INFO',
+            # 'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/django.log'),
+            'formatter': 'prod',
+            'when': 'D',
+            'interval': 1,
+            'backupCount': 7,
         },
     },
 
