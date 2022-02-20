@@ -9,6 +9,7 @@ from .forms import SaitenForm
 from django.shortcuts import render
 
 from .models import Kobo_info
+from .models import Saiten_info
 
 from bs4 import BeautifulSoup
 
@@ -55,16 +56,20 @@ url = "https://jlp.yahooapis.jp/MAService/V1/parse"
 
 class DetailView(generic.DetailView, generic.FormView):
 # class DetailView(generic.FormView):
+#     model = Saiten_info
     model = Kobo_info
     template_name = "detail.html"
 
     form_class = SaitenForm
 
 
-
     def post(self, request, *args, **kwargs):
         # self.request.session['haiku'] = self.request.POST.get('haiku')
+
         SENTENCE = self.request.POST.get('haiku')
+        SENTENCE = SENTENCE.strip()
+        SENTENCE = SENTENCE.replace(' ', '')
+        SENTENCE = SENTENCE.replace('　', '')
         params = {
             "appid": API_KEY,
             "sentence": SENTENCE,
@@ -77,7 +82,28 @@ class DetailView(generic.DetailView, generic.FormView):
         for text in range(len(word)):
             pos_text += word[text].text
 
-        self.request.session['haiku'] = pos_text
+
+
+        # 入力された俳句が採点モデルに存在するか？
+        if Saiten_info.objects.filter(pos=pos_text).exists():
+            pos = Saiten_info.objects.get(pos=pos_text)
+            if 20 < pos.winningCount:
+                self.request.session['comment'] = "素晴らしい作品ですね！！！"
+            elif 15 < pos.winningCount and pos.winningCount < 20:
+                self.request.session['comment'] = "とても良い作品ですね！"
+            elif 10 < pos.winningCount and pos.winningCount < 15:
+                self.request.session['comment'] = "すてきな作品ですね！"
+            elif 3 < pos.winningCount and pos.winningCount < 10:
+                self.request.session['comment'] = "まあまあの作品ですね"
+            elif 0 < pos.winningCount and pos.winningCount < 3:
+                self.request.session['comment'] = "まずまずの作品ですね"
+            else:
+                self.request.session['comment'] = "とても個性的な作品ですね"
+        else:
+            self.request.session['comment'] = "個性的な作品ですね"
+
+        self.request.session['haiku'] = self.request.POST.get('haiku')
+        # self.request.session['haiku'] = pos_text
         return self.get(request, *args, **kwargs)
 
     # 俳句採点formでsubmitボタンを押した時にリダイレクトさせるようにする
@@ -85,34 +111,7 @@ class DetailView(generic.DetailView, generic.FormView):
         self.request.session['haiku'] = self.POST.get('haiku')
         return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
 
-    # def get_context_data(self, **kwargs):
-    #     self.request.session['haiku'] = ''
-    #     return super(DetailView, self).get_context_data(**kwargs)
-    # def post_test(request):
 
-    #     context = {
-    #         'haiku': "POST method OK!!",
-    #     }
-    #     return render(request, 'detail.html', context)
-
-    # def haiku(self, request):
-    #     print(request.POST.get("haiku"))
-    #     return super().haiku(request)
-
-    # def form_valid(self, form):
-    #     form.send_email()
-    #     messages.success(self.request, 'メッセージを送信しました。')
-    #     logger.info('inquiry sent by {}'.format(form.cleaned_data['name']))
-    #     return super().form_valid(form)
-
-
-# def form(request):
-#     text = request.POST['haiku']
-#     d = {
-#         'message': 'POST!',
-#         'text': text,
-#     }
-#     return render(request, 'detail.html', d)
 
 class KoboListView(generic.ListView):
     model = Kobo_info
