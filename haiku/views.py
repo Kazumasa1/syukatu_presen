@@ -44,13 +44,14 @@ class IndexView(generic.TemplateView):
 #     template_name = "inquiry.html"
 #     form_class = InquiryForm
 #     success_url = reverse_lazy('haiku:inquiry')
-
+SENTENCE = ""
 url = "https://jlp.yahooapis.jp/MAService/V1/parse"
-params = {
-    "appid": API_KEY,
-    "sentence": "風に火をつける女の片えくぼ",
-    "response": "pos",
-}
+# params = {
+#     "appid": API_KEY,
+#     "sentence": SENTENCE,
+#     # "sentence": "風に火をつける女の片えくぼ",
+#     "response": "pos",
+# }
 
 class DetailView(generic.DetailView, generic.FormView):
 # class DetailView(generic.FormView):
@@ -59,15 +60,16 @@ class DetailView(generic.DetailView, generic.FormView):
 
     form_class = SaitenForm
 
-    # 俳句採点formでsubmitボタンを押した時にリダイレクトさせるようにする
-    def get_success_url(self):
-        self.request.session['haiku'] = self.POST.get('haiku')
-        return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
 
 
     def post(self, request, *args, **kwargs):
         # self.request.session['haiku'] = self.request.POST.get('haiku')
-
+        SENTENCE = self.request.POST.get('haiku')
+        params = {
+            "appid": API_KEY,
+            "sentence": SENTENCE,
+            "response": "pos",
+        }
         res = requests.get(url, params=params)
         soup = BeautifulSoup(res.text, 'html.parser')
         word = soup.find_all('pos')
@@ -77,6 +79,11 @@ class DetailView(generic.DetailView, generic.FormView):
 
         self.request.session['haiku'] = pos_text
         return self.get(request, *args, **kwargs)
+
+    # 俳句採点formでsubmitボタンを押した時にリダイレクトさせるようにする
+    def get_success_url(self):
+        self.request.session['haiku'] = self.POST.get('haiku')
+        return reverse('haiku:detail', kwargs={'pk': self.kwargs['pk']})
 
     # def get_context_data(self, **kwargs):
     #     self.request.session['haiku'] = ''
