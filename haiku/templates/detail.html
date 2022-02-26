@@ -5,6 +5,14 @@
 
     <div class="container d-grid gap-3" style="margin-top: 200px">
 
+        <!-- パンクズリスト -->
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'haiku:index' %}" class="fw-light text-success">Top</a></li>
+                <li class="breadcrumb-item active" aria-current="page">公募詳細</li>
+            </ol>
+        </nav>
+
         <h1>{{ object.title }}</h1>
         <h2>採点してみる</h2>
         <div class="container p-2 border border-1 rounded-3" style="--bs-bg-opacity: .5;">
@@ -65,7 +73,7 @@
             <dt>懸賞</dt>
             <dd>{{ object.prize }}</dd>
             <dt>応募先</dt>
-            <dd><a href="{{ object.link }}" target="_blank" rel="noopener noreferrer">{{ object.link }}</a></dd>
+            <dd><a href="{{ object.link }}" class="fw-light text-success" target="_blank" rel="noopener noreferrer">{{ object.link }}</a></dd>
             <dt>締切</dt>
             <dd>{{ object.deadline }}</dd>
             <dt>公募テーマ</dt>

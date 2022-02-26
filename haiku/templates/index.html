@@ -6,12 +6,12 @@
     <div class="container" style="margin-top: 200px">
 
         <!-- パンクズリスト -->
-{#        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">#}
-{#            <ol class="breadcrumb">#}
-{#                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->#}
-{#                <li class="breadcrumb-item active" aria-current="page">Top</li>#}
-{#            </ol>#}
-{#        </nav>#}
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">Top</li>
+            </ol>
+        </nav>
 
         <!-- メインコンテンツエリア -->
         <div class="d-grid gap-4">
@@ -22,7 +22,17 @@
                     <div class="card" style="height: 300px;">
                         <div class="card-body">
                             <h5 class="card-title">新着情報</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            {% for kobo in kobo_list %}
+                                <a href="{% url 'haiku:detail' kobo.pk %}" class="card-text fw-light text-success text-decoration-none"><p>
+                                    {{ kobo.title }}
+                                </a>
+                                    {% if kobo.title %}
+                                        <span class="badge rounded-pill bg-warning bg-gradient">New</span>
+                                    {% endif %}
+                                </p>
+                            {% empty %}
+                                <p>公募がありません。。。。</p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -30,7 +40,19 @@
                     <div class="card" style="height: 300px;">
                         <div class="card-body">
                             <h5 class="card-title">おすすめ</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text">
+                                題：{{ kobo_list.0.title }}
+                            </p>
+                            <p class="card-text text-truncate">
+                                賞金：{{ kobo_list.0.prize }}
+                            </p>
+                            <p class="card-text">
+                                締切：{{ kobo_list.0.deadline }}
+                            </p>
+                            <p class="card-text">応募リンク：<a href="{{ kobo_list.0.link }}" class="card-link fw-light text-success">
+                                {{ kobo_list.0.link }}
+                            </a></p>
+                            <a href="{% url 'haiku:detail' kobo_list.0.pk %}" class="btn btn-primary">もっと詳しく</a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +78,6 @@
 
 <!-- 公募情報エリア -->
 {% block kobo_info %}
-    {{ data }}
     {% for kobo in kobo_list %}
         <div class="card">
             <div class="card-body">
@@ -72,7 +93,7 @@
                 <p class="card-text">
                     募集内容：{{ kobo.contents }}
                 </p>
-                <p class="card-text">応募リンク：<a href="{{ kobo.link }}" class="card-link">
+                <p class="card-text">応募リンク：<a href="{{ kobo.link }}" class="card-link fw-light text-success">
                     {{ kobo.link }}
                 </a></p>
                 <a href="{% url 'haiku:detail' kobo.pk %}" class="btn btn-primary">もっと詳しく</a>
