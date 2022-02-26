@@ -18,10 +18,10 @@
     <body>
         <div class="min-vh-100 d-flex align-items-end flex-column mb-3">
             <!-- ナビゲーションバー -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top container-fluid border-bottom">
                 <div class="container">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand" href="{% url 'haiku:index' %}">ホーム</a>
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="{% url 'haiku:index' %}"><img src="https://user-images.githubusercontent.com/70145199/155826105-eb787f81-85ed-41b1-b5fc-53ae702e4c79.png"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -61,36 +61,27 @@
 
 
         <!-- フッターエリア -->
-        <footer class="footer mt-auto container-fluid" style="padding: 0; padding-top: 100px">
-            <div class="container-fluid bg-light">
-                <ul class="nav justify-content-center border-bottom" style="padding-top: 50px;">
+        <footer class="footer mt-auto container-fluid" style="padding: 100px 0px 0px 50px">
+            <div class="container-fluid bg-white">
+                <ul class="nav justify-content-center border-top" style="padding-top: 50px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">川柳公募支援サイト</a>
+                        <img src="https://user-images.githubusercontent.com/70145199/155826105-eb787f81-85ed-41b1-b5fc-53ae702e4c79.png">
                     </li>
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
                 </ul>
-                <ul class="nav justify-content-center" style="padding-bottom: 50px;">
+                <ul class="nav justify-content-center" style="padding: 25px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">〜 詠み人知らず 〜</a>
+                       <!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+                        <a href="https://developer.yahoo.co.jp/sitemap/">
+                        <img src="https://s.yimg.jp/images/yjdn/yjdn_attbtn2_105_17.gif" width="105" height="17" title="Webサービス by Yahoo! JAPAN" alt="Webサービス by Yahoo! JAPAN" border="0" style="margin:15px 15px 15px 15px"></a>
+                        <!-- End Yahoo! JAPAN Web Services Attribution Snippet -->
                     </li>
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="#">Link</a>#}
-{#                    </li>#}
                 </ul>
+                <ul class="nav justify-content-center" style="padding-top: 50px;">
+                    <li class="nav-item">
+                        <p class="fw-light text-black-50" style="font-size: 0.75rem">© 2022 川柳公募支援サイト 〜 詠み人知らず 〜</p>
+                    </li>
+                </ul>
+
             </div>
         </footer>
     </body>

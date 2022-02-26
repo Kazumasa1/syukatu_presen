@@ -12,4 +12,4 @@ urlpatterns = [
 ]
 
 # 開発サーバーでメディアを配信できるようにする設定
-# urlpatterns += static(settings_common.MEDIA_URL, document_root=settings_dev.MEDIA_ROOT)
+urlpatterns += static(settings_common.MEDIA_URL, document_root=settings_dev.MEDIA_ROOT)
