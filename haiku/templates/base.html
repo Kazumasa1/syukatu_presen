@@ -11,61 +11,29 @@
 
         <title>{% block title %}{% endblock %}</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
         {% block head %}{% endblock %}
     </head>
 
     <body>
-        <div class="min-vh-100 d-flex align-items-end flex-column mb-3">
+        <div class="d-flex align-items-end flex-column mb-3">
             <!-- ナビゲーションバー -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top container-fluid border-bottom">
                 <div class="container">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="{% url 'haiku:index' %}"><img src="https://user-images.githubusercontent.com/70145199/155826105-eb787f81-85ed-41b1-b5fc-53ae702e4c79.png"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-{#                                <li class="nav-item">#}
-{#                                    <a class="nav-link" href="#">このサイトについて</a>#}
-{#                                </li>#}
-{#                                <li class="nav-item">#}
-{#                                    <a class="nav-link" href="{% url 'haiku:inquiry' %}">お問合せ</a>#}
-{#                                </li>#}
-    {#                            {% if user.is_authenticated %}#}
-    {#                                <li class="nav-item">#}
-    {#                                    <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>#}
-    {#                                </li>#}
-    {#                            {% else %}#}
-    {#                                <li class="nav-item">#}
-    {#                                    <a class="nav-link" href="{% url 'account_signup' %}">会員登録</a>#}
-    {#                                </li>#}
-    {#                                <li class="nav-item">#}
-    {#                                    <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>#}
-    {#                                </li>#}
-    {#                            {% endif %}#}
-                            </ul>
-                        </div>
-                    </nav>
+                    <a class="navbar-brand" href="{% url 'haiku:index' %}"><img src="https://user-images.githubusercontent.com/70145199/155842941-f4e3653b-d9ec-4da5-ad1d-a81e5d6071bc.svg"></a>
                  </div>
             </nav>
+        </div>
 
-
-            {% block header%}{% endblock %}
-
-            {% block top_contents%}{% endblock %}
-            {% block kobo_info %}{% endblock %}
-            {% block botton_contents%}{% endblock %}
+            {% block contents%}{% endblock %}
             {% block kobo_detail %}{% endblock %}
 
 
         <!-- フッターエリア -->
-        <footer class="footer mt-auto container-fluid" style="padding: 100px 0px 0px 50px">
+        <footer class="footer mt-auto container-fluid" style="padding: 100px 0px 50px 0px">
             <div class="container-fluid bg-white">
                 <ul class="nav justify-content-center border-top" style="padding-top: 50px;">
                     <li class="nav-item">
-                        <img src="https://user-images.githubusercontent.com/70145199/155826105-eb787f81-85ed-41b1-b5fc-53ae702e4c79.png">
+                        <img src="https://user-images.githubusercontent.com/70145199/155842941-f4e3653b-d9ec-4da5-ad1d-a81e5d6071bc.svg">
                     </li>
                 </ul>
 
