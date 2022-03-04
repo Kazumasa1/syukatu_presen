@@ -4,3 +4,29 @@
 
 ## DEMO
 ![syupre](https://user-images.githubusercontent.com/70145199/156118456-d729cb2a-e2e3-46e1-bb75-ecc9431550e3.png)
+
+## Requirement
+asgiref==3.4.1
+beautifulsoup4==4.10.0
+certifi==2021.10.8
+cffi==1.15.0
+charset-normalizer==2.0.7
+cryptography==35.0.0
+defusedxml==0.7.1
+Django==3.2.9
+django-allauth==0.46.0
+django-baton==2.2.3
+django-environ==0.8.1
+idna==3.3
+oauthlib==3.1.1
+Pillow==8.4.0
+psycopg2-binary==2.9.2
+pycparser==2.21
+PyJWT==2.3.0
+python3-openid==3.2.0
+pytz==2021.3
+requests==2.26.0
+requests-oauthlib==1.3.0
+soupsieve==2.3.1
+sqlparse==0.4.2
+urllib3==1.26.7
