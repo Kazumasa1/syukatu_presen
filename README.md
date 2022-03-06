@@ -5,6 +5,8 @@
 ## DEMO
 ![syupre](https://user-images.githubusercontent.com/70145199/156118456-d729cb2a-e2e3-46e1-bb75-ecc9431550e3.png)
 
+### Prometheusを使って監視中です
+![grafana-2022-03-05](https://user-images.githubusercontent.com/70145199/156926322-ac32a01f-ca9d-4a32-980a-c7725e6171f6.png)
 ## Requirement
 asgiref==3.4.1<br>
 beautifulsoup4==4.10.0<br>
