@@ -7,6 +7,15 @@
 
 ### Prometheusを使って監視中です
 ![grafana-2022-03-05](https://user-images.githubusercontent.com/70145199/156926322-ac32a01f-ca9d-4a32-980a-c7725e6171f6.png)
+
+### Prometheus / Grafana　の監視項目
+#### CPU使用率
+#### メモリ使用率
+#### Swap領域の利用率
+#### ロードアベレージ
+#### Prometheusの死活監視
+#### Nginxの死活監視
+
 ## Requirement
 asgiref==3.4.1<br>
 beautifulsoup4==4.10.0<br>
