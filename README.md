@@ -11,42 +11,42 @@
 ### Prometheus / Grafana　の監視項目
 #### CPU使用率
 ##### userのCPU使用率
-rate(node_cpu_seconds_total{job="ec2",mode="user"}[5m]) * 100
+`rate(node_cpu_seconds_total{job="ec2",mode="user"}[5m]) * 100`
 ##### systemのCPU使用率
-rate(node_cpu_seconds_total{job="ec2",mode="system"}[5m]) * 100
+`rate(node_cpu_seconds_total{job="ec2",mode="system"}[5m]) * 100`
 ##### 全体のCPU使用率
-100 - (avg by (instance) (rate(node_cpu_seconds_total{job="ec2",mode="idle"}[5m])) * 100)
+`100 - (avg by (instance) (rate(node_cpu_seconds_total{job="ec2",mode="idle"}[5m])) * 100)`
 
 #### メモリ使用率
 ##### 全体のメモリ容量
-node_memory_MemTotal_bytes{instance="xxxxxx",job="ec2"}/1000000000 - node_memory_MemAvailable_bytes{instance="xxxxxx",job="ec2"}/1000000000
+`node_memory_MemTotal_bytes{instance="xxxxxx",job="ec2"}/1000000000 - node_memory_MemAvailable_bytes{instance="xxxxxx",job="ec2"}/1000000000`
 ##### 全体のメモリ使用率
-node_memory_MemTotal_bytes{instance="xxxxxx",job="ec2"}/1000000000
+`node_memory_MemTotal_bytes{instance="xxxxxx",job="ec2"}/1000000000`
 
 #### Swap領域の使用率
 ##### Swapのフリーサイズ
-node_memory_SwapFree_bytes{instance="xxxxxx",job="ec2"}
+`node_memory_SwapFree_bytes{instance="xxxxxx",job="ec2"}`
 ##### Swapのキャッシュサイズ
-node_memory_SwapCached_bytes{instance="xxxxxx",job="ec2"}
+`node_memory_SwapCached_bytes{instance="xxxxxx",job="ec2"}`
 ##### 全体のSwap領域の使用率
-node_memory_SwapTotal_bytes{instance="xxxxxx",job="ec2"}
+`node_memory_SwapTotal_bytes{instance="xxxxxx",job="ec2"}`
 
 #### ロードアベレージ
 ##### 直前1分間のロードアベレージ
-node_load1
+`node_load1`
 ##### 直前5分間のロードアベレージ
-node_load5
+`node_load5`
 ##### 直前15分間のロードアベレージ
-node_load15
+`node_load15`
 
 #### Prometheusの死活監視
-up{instance="localhost:9090", job="prometheus"}
+`up{instance="localhost:9090", job="prometheus"}`
 
 #### Nginxの死活監視
-nginx_up
+`nginx_up`
 
 #### httpリクエストの総数
-nginx_http_requests_total
+`nginx_http_requests_total`
 
 ## Requirement
 asgiref==3.4.1<br>
